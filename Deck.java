@@ -4,7 +4,10 @@ public class Deck {
 
     public ArrayList<Card> playingDeck;
     public Stack<Card> deck;
-
+    
+//the stack is a last in first out data structure used to remove top elements and add elements.
+    // the array list creates an Arrray of cards in this deck class.
+    
     public Deck(){
         playingDeck=new ArrayList<>();
         deck=new Stack<>();
@@ -14,9 +17,9 @@ public class Deck {
         deck=new Stack<>();
         for(Suit suit: Suit.values()){
             for (Value val: Value.values()){
-                Card card=new Card(suit, val);
+                Card card=new Card(suit, val);// this combines suit plus card value from suit and value class
                 playingDeck.add(card);
-                deck.push(card);
+                deck.push(card);// the push element adds to the top of deck
             }
         }
     }
@@ -90,6 +93,8 @@ public class Deck {
       
       return res;
     }
+    
+    // goal of game to check if deck has Cards with values and suit to form AK47
     
     public boolean win(){// check if the deck contains AK47
       ArrayList<Value> vals=new ArrayList<>();
