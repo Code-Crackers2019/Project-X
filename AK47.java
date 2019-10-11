@@ -42,7 +42,7 @@ public class AK47{
          System.out.println("Choose number of human players[1-"+checker+"]:");
          int player=input.nextInt();
          try{
-            if(player>1 && player<checker+1){
+            if(player>=1 && player<checker+1){
             return player;
             }
          }catch(Exception a){
@@ -60,7 +60,7 @@ public class AK47{
    }
    public static void game(){
       Scanner input=new Scanner(System.in);
-      System.out.println("Welcome to AK47|n\n AIM: The aim of this game is to attain\n      cards of any suit with the values A, K, 4,7. \n[1]Play\n[]Exit");
+      System.out.println("Welcome to AK47\n\n AIM: The aim of this game is to attain\n\n      cards of any suit with the values A, K, 4,7. \n[1]Play\n[]Exit");
       int opt=input.nextInt();
       if(opt==1){
          int num=Player();
@@ -82,6 +82,9 @@ public class AK47{
          
          
          //dish out cards to the players
+         /*gives teh ccars out by using indexes
+         
+         */
          Deck tempDeck;
          for(int j=0;j<4;j++){
             for(int i=0;i<num;i++){
@@ -138,15 +141,15 @@ public class AK47{
                   tempVal=tempCard.getValue();
                   //if the card that was last dropped is a [A, K, 4, or 7]
                   if((tempVal==Value.ACE || tempVal==Value.KING || tempVal==Value.FOUR || tempVal==Value.SEVEN) && !extra.get(i).contains(tempVal)){
-                     System.out.print("Takes from the ground.");
-                     tempDeck=extra.get(i);
-                     tempDeck.addCard(recycleDeck.drawCard());
-                     extra.set(i,tempDeck);
-                     tempDeck=players.get(i);
-                     tempCard=tempDeck.drawCard();
-                     players.set(i,tempDeck);
-                     System.out.println("Then drops a card");
-                     recycleDeck.addCard(tempCard);
+                  System.out.print("Takes from the ground.");
+                  tempDeck=extra.get(i);
+                  tempDeck.addCard(recycleDeck.drawCard());
+                  extra.set(i,tempDeck);
+                  tempDeck=players.get(i);
+                  tempCard=tempDeck.drawCard();
+                  players.set(i,tempDeck);
+                  System.out.println("Then drops a card");
+                  recycleDeck.addCard(tempCard);
                   }
                   else{
                      tempCard=playingDeck.drawCard();
